@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "orchestator-client"
+    }
+  },
+  "defaultProject": "orchestator-client",
+  "cli": {
+    "analytics": false
+  }
 }

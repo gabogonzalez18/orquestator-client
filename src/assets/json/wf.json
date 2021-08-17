@@ -1,0 +1,57 @@
+{
+    "id": "6ce94be8-abf6-4486-b7c3-2abfddd519dd",
+    "name": "workflow de prueba",
+    "input": {
+        "nombre": "prueba",
+        "identificacion": "123456789",
+        "codigo": "1"
+    },
+    "tasks": [{
+            "name": "task choice",
+            "type": "CHOICE",
+            "caseValueParam": "codigo",
+            "decisionCases": [{
+                    "valueOption": "1",
+                    "next": "task one",
+                    "type": "CHOICE_OPTION"
+                },
+                {
+                    "valueOption": "2",
+                    "next": "task two",
+                    "type": "CHOICE_OPTION"
+                },
+                {
+                    "valueOption": "DEFAULT",
+                    "next": "task three",
+                    "type": "CHOICE_OPTION"
+                }
+            ]
+        },
+        {
+            "name": "task one",
+            "type": "HTTP",
+            "inputParameters": {
+                "name": "nombre"
+            },
+            "methodHttp": "GET",
+            "uri": "http://localhost:8081/api/va/ping/{name}",
+            "outputParameters": "task_one",
+            "next": "task finished"
+        },
+        {
+            "name": "task two",
+            "type": "HTTP",
+            "inputParameters": {
+                "name": "nombre"
+            },
+            "methodHttp": "GET",
+            "uri": "http://localhost:8081/api/va/ping/{name}",
+            "outputParameters": "task_one",
+            "next": "task finished"
+        },
+        {
+            "name": "task finished",
+            "type": "FINISH"
+        }
+    ]
+}
